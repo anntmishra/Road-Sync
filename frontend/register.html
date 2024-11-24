@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Glass effect for form */
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Background image styling with a gradient overlay for readability */
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/login.png'); /* Ensure this path is correct */
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding-top: 100px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Registration form container */
+        .registration-container {
+            width: 1274px;
+            height: 550px;
+            margin: 0 auto;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Left side of the form */
+        .registration-form {
+            width: 60%;
+            margin-right: 20px;
+        }
+
+        .registration-form h2 {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: white;
+            transition: color 0.3s;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .registration-form h2:hover {
+            color: #00c9e8;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .registration-form label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            color: white;
+        }
+
+        /* Flexbox for input containers */
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .input-container i {
+            font-size: 20px;
+            color: #aaa;
+            margin-right: 10px;
+        }
+
+        .registration-form input[type="text"],
+        .registration-form input[type="email"],
+        .registration-form input[type="password"],
+        .registration-form input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 0; /* Reset margin to avoid overlap issues */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .registration-form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .registration-form button[type="submit"]:hover {
+            background-color: #333333;
+        }
+
+        /* "Already a user?" section */
+        .already-user {
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            font-size: 10px;
+        }
+
+        .already-user a {
+            color: #ffffff;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        .already-user a:hover {
+            color: #00c9e8;
+        }
+
+        /* Right side for profile picture upload */
+        .profile-upload {
+            width: 35%;
+            text-align: center;
+        }
+
+        .profile-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-upload input[type="file"] {
+            display: none;
+        }
+
+        .profile-upload label {
+            cursor: pointer;
+            color: white;
+            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .profile-upload label:hover {
+            background-color: #333333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="registration-container glass-effect">
+    <!-- Left side - Registration form -->
+    <div class="registration-form">
+        <h2>Register</h2>
+        
+        <form id="registration-form" action="/register" method="POST" enctype="multipart/form-data">
+            <div class="input-container mb-4">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-container mb-4">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-container mb-4">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="input-container mb-4">
+                <i class="fas fa-phone"></i>
+                <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
+            </div>
+            <div class="input-container mb-4">
+                <i class="fas fa-truck"></i>
+                <input type="number" id="number-of-trucks" name="number-of-trucks" placeholder="Number of Trucks" required>
+            </div>
+            <div class="input-container mb-4">
+                <i class="fas fa-dollar-sign"></i>
+                <input type="text" id="total-revenue" name="total-revenue" placeholder="Total Revenue" required>
+            </div>
+            <button type="submit">Register</button>
+
+            <!-- "Already a user?" section -->
+            <div class="already-user">
+                <p>Already a user? <a href="login.html">Login here</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Right side - Profile picture upload -->
+    <div class="profile-upload">
+        <div class="profile-circle">
+            <img id="profile-image" src="" alt="Profile Picture" style="display: none;">
+        </div>
+        <input type="file" id="profile-pic" name="profile-pic" accept="image/*" onchange="previewProfileImage()">
+        <label for="profile-pic">Add Profile Picture</label>
+    </div>
+</div>
+
+<script>
+    function previewProfileImage() {
+        const fileInput = document.getElementById('profile-pic');
+        const profileImage = document.getElementById('profile-image');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                profileImage.src = e.target.result;
+                profileImage.style.display = 'block';
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
+</body>
+</html>
