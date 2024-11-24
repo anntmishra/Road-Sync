@@ -1,0 +1,374 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header and Navbar Styles */
+header {
+    background-color: transparent;
+    color: #53a8b6;
+    padding: 10px 0;
+    height: 66px;
+}
+
+/* Navbar Container */
+.navbar {
+    width: 100%;
+    position: relative; /* Fixed to the top */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: transparent; /* Dark background for contrast */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+/* Navbar Inner Container */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Padding for spacing */
+}
+
+/* Logo Styling */
+.logo a {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 20px;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Gap between menu items */
+}
+
+.nav-links li {
+    position: relative;
+}
+
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px; /* Padding to create button effect */
+    border-radius: 5px; /* Rounded corners */
+    transition: all 0.3s ease; /* Smooth transition */
+    position: relative;
+}
+
+/* Hover Effect */
+/* Glossy Hover Effect */
+.nav-links a:hover {
+    color: #ffffff; /* White text color on hover */
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1)); /* Glossy gradient effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+    backdrop-filter: blur(5px); /* Apply blur for glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border to enhance glassy effect */
+    transform: translateY(-2px); /* Slight lift on hover */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Underline Effect */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #aaaaaa; /* Underline color */
+    transition: width 0.3s ease; /* Smooth transition for underline */
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* Expand underline on hover */
+}
+
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+    display: none; /* Hide by default */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+
+/* Hero Section Styles */
+.hero {
+    position: relative;
+    height: calc(100vh - 66px); /* Full screen height minus navbar height */
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire area */
+    filter: brightness(50%); /* Darken the image for better text readability */
+    position: fixed; /* Fix the image to the viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* Send the image to the background behind content */
+}
+
+
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1); /* Light transparent background for glassy effect */
+    padding: 30px 40px; /* Increased padding for better spacing */
+    border-radius: 15px; /* Softer rounded corners */
+    font-size: 1.5rem; /* Adjusted font size for better readability */
+    backdrop-filter: blur(10px); /* Apply blur effect for glassmorphism */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37); /* Add a soft shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.18); /* Subtle border to enhance the glass effect */
+    transition: all 0.3s ease-in-out; /* Smooth transitions for any interactive effects */
+}
+
+.hero-text h1 {
+    font-size: 2rem; /* Size of the headline */
+    font-weight: bold; /* Make the headline stand out */
+    margin-bottom: 10px; /* Add some space below the headline */
+}
+
+.hero-text p {
+    font-size: 1.1rem; /* Slightly smaller size for the paragraph */
+    margin-bottom: 20px; /* Add space below the paragraph */
+}
+
+.register-button {
+    padding: 12px 25px;
+    font-size: 18px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15); /* Glassy background */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    backdrop-filter: blur(10px); /* Glass effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    text-transform: uppercase;
+    text-decoration: none; /* Remove underline */
+    transition: all 0.3s ease; /* Smooth hover transition */
+    align-items: center;
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.register-button:hover {
+    background: rgba(255, 255, 255, 0.3); /* Slightly brighter on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+
+
+
+
+
+/* Hover Effect */
+.register-button:hover {
+    background: rgba(255, 255, 255, 0.2); /* Slightly increase transparency on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly more pronounced shadow on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+
+/* Services Section Styles */
+/* Services Section Styles */
+/* Services Section Styles */
+.services {
+    background-color: rgba(254, 254, 254, 0.1); /* Light background color with transparency */
+    color: #333;
+    padding: 4rem 1.5rem; /* Adjust spacing as needed */
+    text-align: center;
+}
+
+.services .container {
+    max-width: 1200px; /* Limit the container width */
+    margin: 0 auto; /* Center container horizontally */
+    padding: 0 1.5rem;
+    
+}
+
+/* Main Heading */
+/* Main Heading */
+.services h2 {
+    font-size: 2.5rem; /* Slightly larger font size for impact */
+    font-weight: bold;
+    color: #fcfafa;
+    margin-bottom: 1.5rem; /* Increase space below heading */
+    text-transform: uppercase; /* Make text all uppercase */
+    letter-spacing: 2px; /* Add letter spacing for a modern look */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Subtle text shadow for depth */
+    position: relative;
+}
+
+/* Underline Effect */
+.services h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px; /* Position the underline slightly below the text */
+    transform: translateX(-50%);
+    width: 60px; /* Width of the underline */
+    height: 3px; /* Thickness of the underline */
+    background-color: #53a8b6; /* Color of the underline */
+    border-radius: 3px; /* Rounded corners for the underline */
+}
+
+/* Subheading */
+.services p {
+    font-size: 1.125rem;
+    color: #ffffff;
+    margin-bottom: 3rem;
+}
+
+/* Grid Layout */
+.services .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four columns for services */
+    gap: 1.5rem; /* Gap between items */
+    position: relative;
+}
+
+/* Service Block Styling */
+.service {
+    background: rgba(255, 255, 255, 0.1); /* Light glassy effect */
+    padding: 10px;
+    border-radius: 15px; /* Rounded corners for a smoother look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Slightly more pronounced shadow */
+    backdrop-filter: blur(15px); /* Stronger glass effect */
+    transition: all 0.3s ease;
+    text-align: center;
+    margin: 0; /* Remove margin for grid layout */
+    width: 100%; /* Full width in grid cell */
+    height: 100%; /* Full height in grid cell */
+
+    
+}
+
+
+
+/* Hover Effect */
+.service:hover {
+    background: rgba(255, 255, 255, 0.2); /* More opaque background on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+    transform: translateY(-5px); /* Slight lift effect */
+}
+
+/* Special Styling for the Fifth Service Block */
+.service:nth-child(5) {
+    grid-column: span 2; /* Span two columns */
+    grid-row: span 2; /* Span two rows */
+    height: 100%; /* Full height */
+}
+
+
+/* Image Styling */
+.service img {
+    max-width: 250px; /* Adjust image size */
+    height: 250px;
+    margin-bottom: 1rem;
+}
+
+/* Service Title */
+.service h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #fcfafa; /* Match with main heading color */
+}
+
+/* Service Description */
+.service p {
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    background-color: #2C3E50; /* Dark background color for contrast */
+    color: #FFFFFF; /* White text for readability */
+    text-align: center; /* Center the text */
+    padding: 20px 0; /* Add vertical padding for spacing */
+    position: relative; /* Fix the footer to the bottom of the page */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Make the footer span the full width of the page */
+    font-size: 14px; /* Set a standard font size */
+    z-index: 10; /* Ensure the footer appears above other content */
+}
+
+footer p {
+    margin: 0; /* Remove default margin */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 66px; /* Adjusted for proper alignment */
+        right: 0;
+        background-color: #333;
+        width: 100%;
+        height: calc(100vh - 66px); /* Full screen height minus navbar height */
+        flex-direction: column;
+        align-items: center; /* Center-align items */
+        transform: translateX(100%); /* Start off-screen */
+        transition: transform 0.5s ease;
+    }
+
+    .nav-links.active {
+        transform: translateX(0%); /* Slide in when active */
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
