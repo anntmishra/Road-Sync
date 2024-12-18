@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Glass effect for form */
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Background image styling with a gradient overlay for readability */
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/login.png'); /* Ensure this path is correct */
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding-top: 300px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Login form container */
+        .login-container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .login-form h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: white;
+            transition: color 0.3s;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-form h2:hover {
+            color: #00c9e8;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .login-form label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            color: white;
+        }
+
+        /* Flexbox for input containers */
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .input-container i {
+            font-size: 20px;
+            color: #aaa;
+            margin-right: 10px;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .login-form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .login-form button[type="submit"]:hover {
+            background-color: #333333;
+        }
+
+        /* "Not a user?" section */
+        .not-a-user {
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            font-size: 10px;
+        }
+
+        .not-a-user a {
+            color: #ffffff;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        .not-a-user a:hover {
+            color: #00c9e8;
+        }
+    </style>
+</head>
+<body>
+    <form id="login-form" action="/login" method="POST">
+    <div class="login-container">
+        <form id="login-form" action="/login" method="POST">
+            <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        </form>
+        <div class="error-message">
+            <!-- Error message will be displayed here -->
+        </div>
+    </div>
+
+    <div class="not-a-user">
+        <p>Not a user? <a href="/register">Register here</a></p>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+            })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else if (response.status === 401) {
+                    document.querySelector('.error-message').textContent = 'Invalid username or password. Please try again.';
+                }
+            });
+        });
+    </script>
+</html>
+</html>

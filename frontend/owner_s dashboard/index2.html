@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../owner's dashboard/style2.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-4">Owner Dashboard</h1>
+
+        <!-- Truck Details -->
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Truck Details</h2>
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead>
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Truck ID</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% trucks.forEach(truck => { %>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= truck.truck_id %></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= truck.details %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Cargo Details Form -->
+        <div class="bg-white p-4 rounded-lg shadow-md mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Add Cargo Details</h2>
+            <form action="/dashboard" method="POST">
+                <div class="mb-4">
+                    <label for="cargo_weight" class="block text-sm font-medium text-gray-700">Cargo Weight</label>
+                    <input type="text" id="cargo_weight" name="cargo_weight" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                </div>
+                <div class="mb-4">
+                    <label for="cargo_name" class="block text-sm font-medium text-gray-700">Cargo Name</label>
+                    <input type="text" id="cargo_name" name="cargo_name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                </div>
+                <div class="mb-4">
+                    <label for="drop_location" class="block text-sm font-medium text-gray-700">Drop Location</label>
+                    <input type="text" id="drop_location" name="drop_location" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                </div>
+                <div class="mb-4">
+                    <label for="start_location" class="block text-sm font-medium text-gray-700">Start Location</label>
+                    <input type="text" id="start_location" name="start_location" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                </div>
+                <div class="mb-4">
+                    <label for="comment" class="block text-sm font-medium text-gray-700">Comment</label>
+                    <textarea id="comment" name="comment" rows="4" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                </div>
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
